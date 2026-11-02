@@ -17,7 +17,7 @@ function cargarProductos() {
     const productosGuardados = JSON.parse(guardados)
     return productosGuardados.map(producto => {
       const inicial = productosIniciales.find(item => item.id === producto.id)
-      return inicial ? { ...producto, imagen: producto.imagen || inicial.imagen } : producto
+      return inicial ? { ...producto, imagen: inicial.imagen } : producto
     })
   } catch {
     return productosIniciales
