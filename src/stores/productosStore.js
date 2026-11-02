@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 
 const productosIniciales = [
-  { id: 1, nombre: 'Laptop Pro 15', precio: 24999, descripcion: 'Laptop potente para trabajo, estudio y entretenimiento.', categoria: 'Electrónica', stock: 12, imagen: '/SPA-3/images/laptop.svg' },
-  { id: 2, nombre: 'Audífonos Inalámbricos', precio: 1899, descripcion: 'Audífonos con cancelación de ruido y batería de larga duración.', categoria: 'Audio', stock: 24, imagen: '/SPA-3/images/headphones.svg' },
-  { id: 3, nombre: 'Mouse Ergonómico', precio: 899, descripcion: 'Mouse inalámbrico cómodo con precisión ajustable.', categoria: 'Accesorios', stock: 18, imagen: '/SPA-3/images/mouse.svg' },
-  { id: 4, nombre: 'Mochila Urbana', precio: 1299, descripcion: 'Mochila resistente con compartimento acolchado para laptop.', categoria: 'Ropa', stock: 9, imagen: '/SPA-3/images/backpack.svg' },
-  { id: 5, nombre: 'Lámpara Escritorio LED', precio: 699, descripcion: 'Lámpara regulable con luz cálida y conexión USB.', categoria: 'Hogar', stock: 15, imagen: '/SPA-3/images/lamp.svg' },
+  { id: 1, nombre: 'Laptop Pro 15', precio: 24999, descripcion: 'Laptop potente para trabajo, estudio y entretenimiento.', categoria: 'Electrónica', stock: 12, imagen: 'https://placehold.co/400x260/1e1e2e/6366f1?text=Laptop' },
+  { id: 2, nombre: 'Audífonos Inalámbricos', precio: 1899, descripcion: 'Audífonos con cancelación de ruido y batería de larga duración.', categoria: 'Audio', stock: 24, imagen: '' },
+  { id: 3, nombre: 'Mouse Ergonómico', precio: 899, descripcion: 'Mouse inalámbrico cómodo con precisión ajustable.', categoria: 'Accesorios', stock: 18, imagen: '' },
+  { id: 4, nombre: 'Mochila Urbana', precio: 1299, descripcion: 'Mochila resistente con compartimento acolchado para laptop.', categoria: 'Ropa', stock: 9, imagen: '' },
+  { id: 5, nombre: 'Lámpara Escritorio LED', precio: 699, descripcion: 'Lámpara regulable con luz cálida y conexión USB.', categoria: 'Hogar', stock: 15, imagen: '' },
 ]
 
 function cargarProductos() {
@@ -14,11 +14,7 @@ function cargarProductos() {
     const guardados = localStorage.getItem('shopvue-productos')
     if (!guardados) return productosIniciales
 
-    const productosGuardados = JSON.parse(guardados)
-    return productosGuardados.map(producto => {
-      const inicial = productosIniciales.find(item => item.id === producto.id)
-      return inicial ? { ...producto, imagen: inicial.imagen } : producto
-    })
+    return JSON.parse(guardados)
   } catch {
     return productosIniciales
   }
