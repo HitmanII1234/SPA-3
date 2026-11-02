@@ -51,7 +51,14 @@ function agregarAlCarrito(producto) {
 
 // Imagen de fallback si no hay imagen definida
 function imagenSrc(producto) {
-  return producto.imagen || `https://placehold.co/400x260/1e1e2e/6366f1?text=${encodeURIComponent(producto.nombre)}`
+  const imagenesPorId = {
+    1: '/SPA-3/images/laptop.svg',
+    2: '/SPA-3/images/headphones.svg',
+    3: '/SPA-3/images/mouse.svg',
+    4: '/SPA-3/images/backpack.svg',
+    5: '/SPA-3/images/lamp.svg',
+  }
+  return imagenesPorId[producto.id] || producto.imagen || `https://placehold.co/400x260/1e1e2e/6366f1?text=${encodeURIComponent(producto.nombre)}`
 }
 </script>
 
